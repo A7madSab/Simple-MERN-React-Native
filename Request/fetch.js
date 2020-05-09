@@ -1,6 +1,6 @@
 const fetch = require("node-fetch")
 
-fetch('http://localhost:1000/people', {
+fetch('http://192.168.1.2:1000/people', {
     headers: {
         "Content-type": "application/json; charset=UTF-8",
     },
@@ -16,12 +16,7 @@ fetch('http://localhost:1000/people', {
     .catch(err => console.error(err))
 
 
-fetch('http://localhost:1000/people')
+fetch('http://192.168.1.2:1000/people')
     .then(response => response.json())
     .then(json => console.log(json))
     .catch(err => console.error(err))
-
-// fetch('http://localhost:1000/people')
-//     .then(response => response.json())
-//     .then(json => console.log(json))
-//     .catch(err => console.error(err))

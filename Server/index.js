@@ -17,13 +17,18 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', "*");
     next()
 })
+
 // rest
-let people = []
+let people = [{
+    id: "6513846431",
+    name: "ahmad",
+    age: 21
+}]
 
 app.get("/people", (req, res) => {
-    console.log(people)
     res.json(people)
 })
+
 app.get("/people/:id", (req, res) => {
     const id = req.params.id
     people.map(person => {
@@ -33,16 +38,14 @@ app.get("/people/:id", (req, res) => {
     })
     res.send({})
 })
+
 app.post("/people", (req, res) => {
-    console.log("adding person")
     const person = {
         id: uuid(),
         ...req.body
     }
     people = people.concat([person])
-    console.log("Person Added:", person)
-    console.log("All People:", people)
     res.json(person)
 })
 
-app.listen(1000)
+app.listen(1000, () => console.log("App Started"))
